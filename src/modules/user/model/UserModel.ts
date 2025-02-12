@@ -6,5 +6,5 @@ export interface IUser{
 
 export interface IUserRepo{
     create(data:IUser): Promise<IUser>
-    findByEmail(email: string): Promise<IUser>
+    findByEmail(email: string): Promise<IUser|null>
 }
