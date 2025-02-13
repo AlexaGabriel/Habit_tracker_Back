@@ -7,8 +7,8 @@ const contUser = new UserController();
 Userrouter.post("/create", async (req: Request, res: Response, next:NextFunction) => {
     await contUser.HandleCreateUser(req, res, next);
 });
-Userrouter.get("/findByEmail", async (req: Request, res: Response) => {
-    await contUser.HandleFindUser(req, res);
+Userrouter.get("/findByEmail", async (req: Request, res: Response, next:NextFunction) => {
+    await contUser.HandleFindUser(req, res, next);
 });
 
 export default Userrouter;

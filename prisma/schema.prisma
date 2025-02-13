@@ -25,7 +25,8 @@ model Habit {
   id        String     @id @default(uuid())
   title     String
   description   String?
-  category Category?
+  category Category @relation( fields: [catId], references: [id])
+  catId Int @unique
   frequency Boolean @default(false)
   habit_progress Habit_Progress[]
   owner User @relation(fields: [ownerId], references: [id])
@@ -35,8 +36,7 @@ model Habit {
 model Category{
    id        Int     @id @default(autoincrement())
    title String
-   habit Habit @relation( fields: [habitId], references: [id])
-   habitId String @unique
+   habit Habit[]
 }
 
 model Habit_Progress{

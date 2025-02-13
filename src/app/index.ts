@@ -1,6 +1,7 @@
 import express from 'express'
 import cors from "cors"
 import Userrouter from '../modules/user/routes/UserRou'
+import Catrouter from '../modules/category/routes/CatRou'
 import { errorMiddleware } from './ErrorMiddleware'
 
 const app = express()
@@ -10,14 +11,11 @@ app.use(express.json());
 app.use(cors({
     origin: '*'
 }));
-app.get("/naoentreaqui", (req, res) => {
+app.get("/", (req, res) => {
     res.send("eu mandei você não entrar aqui");
 })
-app.get('/', (req, res) => {
-  res.send('Olá Mundo!')
-})
 app.use("/user", Userrouter);
-
+app.use("/category", Catrouter)
 app.use(errorMiddleware)
 
 app.listen(port, () => {

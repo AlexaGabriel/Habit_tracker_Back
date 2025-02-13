@@ -2,7 +2,7 @@ import UserService from "../modules/user/service/UserService";
 import UserRepo from "../modules/user/repository/UserRepo";
 import { IUser } from "../modules/user/model/UserModel";
 
-jest.mock("../modules/user/repository/UserRepo"); // Mocka o repositório
+jest.mock("../modules/user/repository/UserRepo"); 
 
 describe("UserService", () => {
     let userService: UserService;
@@ -11,12 +11,12 @@ describe("UserService", () => {
     beforeEach(() => {
         mockRepo = new UserRepo() as jest.Mocked<UserRepo>;
         userService = new UserService();
-        (userService as any).repository = mockRepo; // Injeta o mock
+        (userService as any).repository = mockRepo; 
     });
 
     it("deve criar um usuário com dados válidos", async () => {
         const mockUser: IUser = {name: "Alex", email: "alex@email.com", password:"12345678" };
-        mockRepo.create.mockResolvedValue(mockUser); // Define o retorno do mock
+        mockRepo.create.mockResolvedValue(mockUser); 
 
         const result = await userService.create(mockUser);
 

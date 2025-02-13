@@ -18,15 +18,13 @@ export default class UserController{
             next(error)
         }
     }
-    async HandleFindUser(req:Request, res:Response){
+    async HandleFindUser(req:Request, res:Response, next:NextFunction){
         const {email} = req.body
         try {
             const find = await this.UserService.findByEmail(email)
-            return res.status(200).send(find
-
-            )
+            return res.status(200).send(find)
         } catch (error) {
-            return res.status(400).json({message: Error})
+            next(error)
         }
     }
 }
