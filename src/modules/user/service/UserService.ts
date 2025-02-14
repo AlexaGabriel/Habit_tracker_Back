@@ -1,6 +1,6 @@
 import { IUser, IUserRepo } from "../model/UserModel";
 import UserRepo from "../repository/UserRepo";
-import { SUser } from "../schema/UserSch";
+import { SUser } from "../../../config/Schema";
 
 export default class UserService implements IUserRepo{
     private repository: UserRepo
