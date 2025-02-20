@@ -2,6 +2,7 @@ import express from 'express'
 import cors from "cors"
 import Userrouter from '../modules/user/routes/UserRou'
 import Catrouter from '../modules/category/routes/CatRou'
+import HabRouter from '../modules/habit/routes/HabRou'
 import { errorMiddleware } from './ErrorMiddleware'
 
 const app = express()
@@ -16,6 +17,7 @@ app.get("/", (req, res) => {
 })
 app.use("/user", Userrouter);
 app.use("/category", Catrouter)
+app.use("/Habit", HabRouter)
 app.use(errorMiddleware)
 
 app.listen(port, () => {
